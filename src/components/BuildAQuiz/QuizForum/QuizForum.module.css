@@ -1,0 +1,45 @@
+.Form {
+    width: 50%;
+    margin: auto;
+}
+
+.InputGroup {
+    position: relative;
+    margin-bottom: 32px;
+    padding: 9px 0;
+    color: #666;
+    font-size: 16px;
+    font-weight: 800;
+    justify-content: space-around;
+    display: flex;
+}
+
+.InputGroup input {
+    font-size: inherit;
+    border: none;
+    border-bottom: 1px solid #e5e5e5;
+    text-align: center;
+    width: 25%;
+}
+
+.ButtonGreen{
+    background: #57b846;
+}
+
+
+.Button{
+    border: none;
+    line-height: 40px;
+    display: inline-block;
+    padding: 0 25px;
+    cursor: pointer;
+    color: #fff;
+    font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
+    -webkit-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    font-size: 14px;
+    font-weight: 700;
+}
+
