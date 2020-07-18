@@ -1,6 +1,5 @@
 import React from 'react'
 
-import Auxiliary from '../../../../hoc/Auxiliary/Auxiliary';
 import classes from './QuizQuestions.module.css';
 
 export default function QuizQuestions(props) {

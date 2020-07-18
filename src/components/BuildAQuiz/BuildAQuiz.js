@@ -53,21 +53,21 @@ export default class BuildAQuiz extends Component {
         e.preventDefault()
         console.log(this.state.quizForum)
 
-        // this.setState({
-        //     quizForum: {
-        //         name: '',
-        //         questions: {
-        //             question1:{
-        //                 question: '',
-        //                 answer: '',
-        //                 fakeAnswer1: '',
-        //                 fakeAnswer2: '',
-        //                 fakeAnswer3: '',
-        //             }, 
-        //         },
-        //     },
-        //     isQuizForumVisible: false
-        // })
+        this.setState({
+            quizForum: {
+                name: '',
+                questions:[
+                    {
+                        question: '',
+                        answer: '',
+                        fakeAnswer1: '',
+                        fakeAnswer2: '',
+                        fakeAnswer3: '',
+                    }
+                 ],
+            },
+            isQuizForumVisible: false
+        })
     }
 
     handleQuizNameChange = (e) => {
