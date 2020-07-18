@@ -1,0 +1,28 @@
+.InputGroup {
+    position: relative;
+    margin-bottom: 32px;
+    padding: 9px 0;
+    color: #666;
+    font-size: 16px;
+    font-weight: 800;
+    justify-content: space-around;
+    display: flex;
+}
+
+.InputGroup input {
+    font-size: inherit;
+    border: none;
+    border-bottom: 1px solid #e5e5e5;
+    text-align: center;
+    width: 25%;
+}
+
+.InputStyle1 input{ 
+    font-size: 26px;
+    width: 50%;
+}
+
+.Card{
+    border: 2px solid black;
+    margin: 20px 0;
+}

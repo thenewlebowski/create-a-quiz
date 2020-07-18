@@ -2,6 +2,8 @@ import React from 'react'
 import classes from './QuizForum.module.css'
 
 import Auxiliary from '../../../hoc/Auxiliary/Auxiliary'
+import QuizQuestion from './QuizQuestions/QuizQuestions'
+import QuizQuestions from './QuizQuestions/QuizQuestions'
 
 export default function QuizForum(props) {
     let header = (
@@ -23,53 +25,16 @@ export default function QuizForum(props) {
         header = null;
     }
 
+    let questions = props.questions.map((question, index)=>(
+        <QuizQuestions
+            currentQuestion={index} 
+            handleChange={props.handleChange}
+        />
+    ))
     return (
         <form onSubmit={props.submit}className={classes.Form}>
             {header}
-            <h3>Question: #{props.currentQuestion + 1}</h3>
-            <div className={classes.InputGroup}>
-                <input
-                required
-                placeholder='Question'
-                name='question'
-                type='text'
-                onChange={(e) => props.handleChange(e, props.currentQuestion)}
-                />
-
-                <input
-                required
-                placeholder='Anwser'
-                name='answer'
-                type='text'
-                onChange={(e) => props.handleChange(e, props.currentQuestion)}
-                />
-            </div>
-
-            <div className={classes.InputGroup}>
-                <input
-                required
-                placeholder='Fake Answer #1'
-                name='fakeAnswer1'
-                type='text'
-                onChange={(e) => props.handleChange(e, props.currentQuestion)}
-                />
-
-                <input
-                required
-                placeholder='Fake Answer #2'
-                name='fakeAnswer2'
-                type='text'
-                onChange={(e) => props.handleChange(e, props.currentQuestion)}
-                />
-
-                <input
-                required
-                placeholder='Fake Answer #3'
-                name='fakeAnswer3'
-                type='text'
-                onChange={(e) => props.handleChange(e, props.currentQuestion)}
-                />
-            </div>
+            {questions}
             <div className={classes.ButtonContainer}>  
                 <p onClick={props.addQuestion} className={[classes.Button, classes.ButtonYellow].join(' ')}>Add Question</p>
                 <button type='submit' className={[classes.Button, classes.ButtonGreen].join(' ')}> Submit </button>

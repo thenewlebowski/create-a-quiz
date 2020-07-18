@@ -46,6 +46,7 @@ export default class BuildAQuiz extends Component {
                 questions: currArr
             }
         })
+        console.log(this.state)
     }
 
     handleSubmit = (e) => {
@@ -96,27 +97,19 @@ export default class BuildAQuiz extends Component {
     }
 
     render() {
-        let quizForum = null;
-        if(this.state.isQuizForumVisible){
-            quizForum = this.state.quizForum.questions.map((question, index) => (
-                    <QuizForum
-                    key={index}
-                    currentQuestion={index}
-                    handleQuizNameChange={this.handleQuizNameChange}
-                    submit = {this.handleSubmit}
-                    handleChange={this.handleChange}
-                    addQuestion = {this.handleAddQuestion}/>
-                )
-            )
-        }
-
         return (
             <div>
                 <BuildAQuizButton 
                     clicked={this.handleQuizVisible} 
                     visible={!this.state.isQuizForumVisible}
                 />
-                {quizForum}
+                <QuizForum
+                    handleQuizNameChange={this.handleQuizNameChange}
+                    submit = {this.handleSubmit}
+                    handleChange={this.handleChange}
+                    addQuestion = {this.handleAddQuestion}
+                    questions={this.state.quizForum.questions}
+                />
             </div>
         )
     }
