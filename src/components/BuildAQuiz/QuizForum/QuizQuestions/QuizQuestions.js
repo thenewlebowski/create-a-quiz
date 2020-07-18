@@ -12,6 +12,7 @@ export default function QuizQuestions(props) {
                 placeholder='Question'
                 name='question'
                 type='text'
+                value={props.question}
                 onChange={(e) => props.handleChange(e, props.currentQuestion)}
                 />
 
@@ -20,6 +21,7 @@ export default function QuizQuestions(props) {
                 placeholder='Anwser'
                 name='answer'
                 type='text'
+                value={props.answer}
                 onChange={(e) => props.handleChange(e, props.currentQuestion)}
                 />
             </div>
@@ -30,6 +32,7 @@ export default function QuizQuestions(props) {
                 placeholder='Fake Answer #1'
                 name='fakeAnswer1'
                 type='text'
+                value={props.fakeAnswer1}
                 onChange={(e) => props.handleChange(e, props.currentQuestion)}
                 />
 
@@ -38,6 +41,7 @@ export default function QuizQuestions(props) {
                 placeholder='Fake Answer #2'
                 name='fakeAnswer2'
                 type='text'
+                value={props.fakeAnswer2}
                 onChange={(e) => props.handleChange(e, props.currentQuestion)}
                 />
 
@@ -46,6 +50,7 @@ export default function QuizQuestions(props) {
                 placeholder='Fake Answer #3'
                 name='fakeAnswer3'
                 type='text'
+                value={props.fakeAnswer3}
                 onChange={(e) => props.handleChange(e, props.currentQuestion)}
                 />
             </div>

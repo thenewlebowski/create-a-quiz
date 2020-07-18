@@ -97,12 +97,9 @@ export default class BuildAQuiz extends Component {
     }
 
     render() {
-        return (
-            <div>
-                <BuildAQuizButton 
-                    clicked={this.handleQuizVisible} 
-                    visible={!this.state.isQuizForumVisible}
-                />
+        let quizForum = null;
+        if(this.state.isQuizForumVisible){
+            quizForum = (
                 <QuizForum
                     handleQuizNameChange={this.handleQuizNameChange}
                     submit = {this.handleSubmit}
@@ -110,6 +107,15 @@ export default class BuildAQuiz extends Component {
                     addQuestion = {this.handleAddQuestion}
                     questions={this.state.quizForum.questions}
                 />
+            )
+        }
+        return (
+            <div>
+                <BuildAQuizButton 
+                    clicked={this.handleQuizVisible} 
+                    visible={!this.state.isQuizForumVisible}
+                />
+                {quizForum}
             </div>
         )
     }
