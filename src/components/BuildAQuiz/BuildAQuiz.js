@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 //Components
 import BuildAQuizButton from './BuildAQuizButton/BuildAQuizButton'
 import QuizForum from './QuizForum/QuizForum'
-import Auxiliary from '../../hoc/Auxiliary/Auxiliary'
 
 export default class BuildAQuiz extends Component {
 
@@ -29,9 +28,9 @@ export default class BuildAQuiz extends Component {
 
     handleChange = (e, key) => {
         //Make shallow copy of the questions array
-        let currArr = {
+        let currArr = [
             ...this.state.quizForum.questions,        
-        }
+        ]
 
         //Copy to a different variable the specific quiz that you would like to edit
         let currQuiz = {
@@ -47,7 +46,6 @@ export default class BuildAQuiz extends Component {
                 questions: currArr
             }
         })
-        console.log(this.state)
     }
 
     handleSubmit = (e) => {
@@ -71,7 +69,7 @@ export default class BuildAQuiz extends Component {
         // })
     }
 
-    handleQuizNameChange = (e, key) => {
+    handleQuizNameChange = (e) => {
         this.setState({quizForum:{
             ...this.state.quizForum,
             name: e.target.value
@@ -95,22 +93,19 @@ export default class BuildAQuiz extends Component {
                 ]
             }
         })
-        setTimeout(() => console.log(this.state.key), 500)
     }
 
     render() {
         let quizForum = null;
         if(this.state.isQuizForumVisible){
-            quizForum = this.state.quizForum.questions.map( (question , index) => (
-                <Auxiliary>
-                    <h1>Create A New Quiz:</h1>
+            quizForum = this.state.quizForum.questions.map((question, index) => (
                     <QuizForum
                     key={index}
+                    currentQuestion={index}
                     handleQuizNameChange={this.handleQuizNameChange}
                     submit = {this.handleSubmit}
                     handleChange={this.handleChange}
                     addQuestion = {this.handleAddQuestion}/>
-                </Auxiliary>
                 )
             )
         }
