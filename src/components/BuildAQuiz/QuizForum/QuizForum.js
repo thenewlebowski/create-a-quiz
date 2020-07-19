@@ -15,6 +15,7 @@ export default function QuizForum(props) {
             key={index}
             currentQuestion={index} 
             handleChange={props.handleChange}
+            remove={props.remove}
         />
     ))
 

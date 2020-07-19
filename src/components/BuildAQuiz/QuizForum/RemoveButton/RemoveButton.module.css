@@ -1,0 +1,14 @@
+.Remove {
+    background: #FF0000	;
+    color: #fff;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    margin: 5px;
+    padding-top: auto;
+    cursor: pointer;
+  }

@@ -1,11 +1,19 @@
 import React from 'react'
 
 import classes from './QuizQuestions.module.css';
+import RemoveButton from '../RemoveButton/RemoveButton'
 
 export default function QuizQuestions(props) {
     return (
         <div className={classes.Card}>
-            <h3>Question #{props.currentQuestion + 1}</h3>
+            <div className={classes.Header}>
+                <h3>Question #{props.currentQuestion + 1}</h3>
+                <RemoveButton 
+                    remove={props.remove}
+                    question={props.currentQuestion}
+                />
+            </div>
+            
             <div className={classes.InputGroup}>
                 <input
                 required
