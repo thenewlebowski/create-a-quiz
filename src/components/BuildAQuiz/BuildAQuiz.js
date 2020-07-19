@@ -53,21 +53,21 @@ export default class BuildAQuiz extends Component {
         e.preventDefault()
         console.log(this.state.quizForum)
 
-        // this.setState({
-        //     quizForum: {
-        //         name: '',
-        //         questions: {
-        //             question1:{
-        //                 question: '',
-        //                 answer: '',
-        //                 fakeAnswer1: '',
-        //                 fakeAnswer2: '',
-        //                 fakeAnswer3: '',
-        //             }, 
-        //         },
-        //     },
-        //     isQuizForumVisible: false
-        // })
+        this.setState({
+            quizForum: {
+                name: '',
+                questions:[
+                    {
+                        question: '',
+                        answer: '',
+                        fakeAnswer1: '',
+                        fakeAnswer2: '',
+                        fakeAnswer3: '',
+                    }
+                 ],
+            },
+            isQuizForumVisible: false
+        })
     }
 
     handleQuizNameChange = (e) => {
@@ -79,7 +79,7 @@ export default class BuildAQuiz extends Component {
     }
 
     handleAddQuestion = () =>{
-        let questionTemplate = {
+        const questionTemplate = {
             question: '',
             answer: '',
             fakeAnswer1: '',
@@ -96,20 +96,41 @@ export default class BuildAQuiz extends Component {
         })
     }
 
+    handleRemoveQuestion = (question) => {
+        let currArr = [
+            ...this.state.quizForum.questions
+        ]
+
+        currArr.splice(question, 1)
+
+        this.setState({
+            quizForum:{
+                questions: currArr
+            }
+        })
+    }
+
     render() {
-        return (
-            <div>
-                <BuildAQuizButton 
-                    clicked={this.handleQuizVisible} 
-                    visible={!this.state.isQuizForumVisible}
-                />
+        let quizForum = null;
+        if(this.state.isQuizForumVisible){
+            quizForum = (
                 <QuizForum
                     handleQuizNameChange={this.handleQuizNameChange}
                     submit = {this.handleSubmit}
                     handleChange={this.handleChange}
                     addQuestion = {this.handleAddQuestion}
                     questions={this.state.quizForum.questions}
+                    remove={this.handleRemoveQuestion}
                 />
+            )
+        }
+        return (
+            <div>
+                <BuildAQuizButton 
+                    clicked={this.handleQuizVisible} 
+                    visible={!this.state.isQuizForumVisible}
+                />
+                {quizForum}
             </div>
         )
     }
