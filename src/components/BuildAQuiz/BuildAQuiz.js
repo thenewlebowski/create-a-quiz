@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import axios from 'axios'
+
 
 //Components
 import BuildAQuizButton from './BuildAQuizButton/BuildAQuizButton'
@@ -46,12 +48,19 @@ export default class BuildAQuiz extends Component {
                 questions: currArr
             }
         })
-        console.log(this.state)
     }
 
     handleSubmit = (e) => {
         e.preventDefault()
         console.log(this.state.quizForum)
+
+        const quiz = {
+            name : this.state.quizForum.name,
+            questions : this.state.quizForum.questions
+        }
+
+        axios.post('api/quizes/add', quiz)
+            .then( res => console.log(res.data))
 
         this.setState({
             quizForum: {
@@ -75,7 +84,6 @@ export default class BuildAQuiz extends Component {
             ...this.state.quizForum,
             name: e.target.value
         }})
-        console.log(this.state)
     }
 
     handleAddQuestion = () =>{
