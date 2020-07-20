@@ -52,7 +52,6 @@ export default class BuildAQuiz extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        console.log(this.state.quizForum)
 
         const quiz = {
             name : this.state.quizForum.name,
