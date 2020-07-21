@@ -1,5 +1,8 @@
 import React from 'react'
 import BuildAQuiz from '../BuildAQuiz/BuildAQuiz'
+import OtherQuizes from '../OtherQuizes/Quizes'
+
+import classes from './Layout.module.css';
 
 export default function Layout() {
     return (
@@ -7,8 +10,10 @@ export default function Layout() {
             <h1>Navbar</h1>
             <main>
                 <BuildAQuiz />
-                <h3>Be able to explore other quizes below</h3>
             </main>
+            <footer className={classes.Footer}>
+                <OtherQuizes />
+            </footer>
         </div>
     )
 }
