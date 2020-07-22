@@ -1,0 +1,30 @@
+.Card{
+    display: inherit;
+    box-sizing: border-box;
+    width: 33%;
+    height: 50%;
+    vertical-align: center;
+}
+.CardInterior{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.Button{
+    border-radius: 5px;
+    background-color: #24252A;
+    cursor: pointer;
+    padding: 20px;
+    color: #edf0f1;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    transition: all 0.3s ease 0s;
+    text-decoration: none; 
+}
+
+.Button:hover{
+    color: #0088a9; 
+}

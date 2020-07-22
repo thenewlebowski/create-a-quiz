@@ -1,0 +1,46 @@
+
+.NavbarContainer{
+    box-sizing: border-box;
+}
+
+.Navbar{
+    display: flex;
+    justify-content: flex-end;
+    background-color: #edf0f1;
+    align-items: center;
+    padding: 10px 5%;
+}
+
+.Navbar li, .Navbar a{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #24252A;
+    text-decoration: none;
+}
+
+.Logo{
+    cursor: pointer;
+    margin-right: auto
+}
+
+.NavLinks{
+    list-style: none;
+}
+
+.NavLinks:last-child{
+    padding-left: 0;
+}
+
+.NavLinks li{
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.NavLinks li a{
+    transition: all 0.3s ease 0s;
+}
+
+.NavLinks li a:hover{
+    color: #0088a9
+}

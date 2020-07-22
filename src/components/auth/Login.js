@@ -3,13 +3,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { loginUser } from '../../actions/authActions';
 
-import React, { Component } from 'react'
-
-export default class Login extends Component {
+class Login extends Component {
     constructor(props){
         super(props)
 
-        state = {
+        this.state = {
             email: '',
             password: '',
             errors: {}
@@ -56,6 +54,7 @@ export default class Login extends Component {
     }
 
     render() {
+        const errors = {}
         return (
             <div className='Container'>
                 <h1>Login</h1>
@@ -74,7 +73,7 @@ export default class Login extends Component {
                     </div>
                     <div>
                         <label htmlFor='password'>Password:</label>
-                        <span>{erros.password} {errors.passwordIncorrect}</span>
+                        <span>{errors.password} {errors.passwordIncorrect}</span>
                         <input
                             onChange={this.handleChange}
                             value={this.state.password}
@@ -92,7 +91,7 @@ export default class Login extends Component {
 }
 
 Login.propTypes = {
-    loginUser = PropTypes.func.isRequired,
+    loginUser : PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired,
 }
