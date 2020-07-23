@@ -77,7 +77,7 @@ class Register extends Component {
                         <span>{errors.email}</span>
                         <input 
                             onChange={this.handleChange}
-                            value={this.state.email}
+                            value={this.state.password}
                             error={ errors.password }
                             id='password'
                             type='password'
@@ -88,7 +88,7 @@ class Register extends Component {
                         <label htmlFor='password2'>Confirm Password: </label>
                         <span>{errors.password2}</span>
                         <input
-                            type='text'
+                            type='password'
                             id='password2'
                             onChange={this.handleChange}
                             value={this.state.password2}
@@ -109,16 +109,17 @@ class Register extends Component {
     }
 }
 
-Register.proptypes = {
+Register.proptype = {
     registerUser: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
-    errors: PropsTypes.object.isRequired
+    errors: PropTypes.object.isRequired
 }
 
-const mapStateToProps = state = ({
+const mapStateToProps = state => ({
     auth: state.auth,
     errors: state.errors
-})
+});
+
 
 export default connect(
     mapStateToProps,

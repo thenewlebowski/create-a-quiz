@@ -1,8 +1,8 @@
 .Card{
     display: inherit;
     box-sizing: border-box;
-    width: 33%;
     height: 50%;
+    width: 33%;
     vertical-align: center;
 }
 .CardInterior{
@@ -10,9 +10,18 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    width: 100%
+}
+
+.HR{
+    width: 75%; 
+    border-color: #2A2924;
+   
 }
 
 .Button{
+    margin: 20px auto;
+    min-width: 50%;
     border-radius: 5px;
     background-color: #24252A;
     cursor: pointer;
@@ -23,8 +32,12 @@
     font-size: 20px;
     transition: all 0.3s ease 0s;
     text-decoration: none; 
+    -webkit-box-shadow: 1px 3px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 3px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 1px 3px 5px 0px rgba(0,0,0,0.75);
 }
 
 .Button:hover{
+    font-size: 25px;
     color: #0088a9; 
 }

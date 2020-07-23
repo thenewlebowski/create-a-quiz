@@ -9,7 +9,7 @@ export default function HomeHeaderCard(props) {
         <div className={classes.Card}>
             <div className={classes.CardInterior}>
                 <Link to={props.link} className={classes.Button}>{props.name}</Link>
-                {props.name2 ? <hr style={{width: '75%', backgroundColor: '#24252A'}}/> : null}
+                {/* {props.name2 ? <hr className={classes.HR}/> : null} */}
                 {props.name2 ? <Link to={props.link2} className={classes.Button}>{props.name2}</Link> : null}
             </div>
         </div>

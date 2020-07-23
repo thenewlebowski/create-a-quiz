@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
+//=====COMPONENTS=====
 import Auxiliary from '../../hoc/Auxiliary/Auxiliary'
 import classes from './Quizes.module.css';
 
@@ -23,14 +24,19 @@ const Quizes = () => {
     }, [])
     return (
         <Auxiliary>
-            {   loading ? null :
-                data.map( quiz => (
-                    <div className={classes.Card}>
-                        <a href={'/'} key={quiz.objectId}>{quiz.name}</a>
-                    </div>
-                ))
-            }
-        </Auxiliary>
+        {loading === true ? null :
+            <div className={classes.Container}>
+                <h6>Recent quizes:</h6>
+                <div className={classes.CardContainer}>
+                    {data.map( quiz => (
+                        <div className={classes.Card}>
+                            <a href={'/'} key={quiz.objectId}>{quiz.name}</a>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        }
+    </Auxiliary>
     )
 }
 

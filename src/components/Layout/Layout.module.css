@@ -1,9 +1,4 @@
-.Footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: #eee;
-    display: flex;
-    justify-self: space-between;
+html, body{
+    background-color: #6F6C5F;
+    
 }

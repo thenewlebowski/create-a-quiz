@@ -8,6 +8,7 @@ import OtherQuizes from '../OtherQuizes/Quizes';
 import Navbar from '../Navigation/Navbar/Navbar';
 import Home from '../Home/Home'
 import Login from '../auth/Login'
+import Register from '../auth/Register'
 //=======REDUX=======
 import { Provider } from 'react-redux';
 import store from '../../store';
@@ -47,6 +48,8 @@ export default function Layout() {
                 <Route exact path={'/'} component={Home} />
                 <Route exact path={'/newquiz'} component={BuildAQuiz} />
                 <Route exact path={'/login'} component={Login} />
+                <Route exact path={'/signup'} component={Register} />
+                <OtherQuizes />
             </Router>
         </Provider>
         // <div>

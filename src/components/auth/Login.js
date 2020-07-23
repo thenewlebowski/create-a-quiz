@@ -35,10 +35,22 @@ class Login extends Component {
     //    }
     // }
 
+    UNSAFE_componentWillReceiveProps(nextProps){
+        if(nextProps.auth.isAuthenticated){
+            this.props.history.push('/'); //push user to home page
+        }
+
+        if(nextProps.errors){
+            this.setState({
+                errors:nextProps.errors
+            })
+        }
+    }
+
 
     handleChange = e => {
         this.setState({
-            [e.target.name] : e.target.value
+            [e.target.id] : e.target.value
         })
     }
 
@@ -54,12 +66,12 @@ class Login extends Component {
     }
 
     render() {
-        const errors = {}
+        const {errors} = this.state;
         return (
             <div className='Container'>
                 <h1>Login</h1>
 
-                <form onSubmit={this.onSubmit}>
+                <form noValidate onSubmit={this.handleSubmit}>
                     <div>
                         <label htmlFor='email'>Email: </label>
                         <span>{errors.email} {errors.emailnotfound}</span>
