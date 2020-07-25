@@ -20,8 +20,8 @@ import setAuthToken from '../../utils/setAuthToken';
 import { setCurrentUser, logoutUser} from '../../actions/authActions';
 
 //======STYLING=======
-import classes from './Layout.module.css';
-import { FLASH_MESSAGE } from '../../actions/types';
+// import classes from './Layout.module.css';
+
 
 //Check to see if token exists to keep user logged in
 if(localStorage.jwtToken){

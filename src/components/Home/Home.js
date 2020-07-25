@@ -7,7 +7,6 @@ import { bindActionCreators } from 'redux';
 import { flashMessage } from '../../actions/authActions';
 
 //=====COMPONENTS=====
-import HomeHeaderCard from './HomeHeaderCard/HomeHeaderCard';
 import HomeMain from './HomeMain/HomeMain';
 import HomePageFooter from '../OtherQuizes/Quizes'
 
@@ -20,12 +19,13 @@ class Home extends Component {
             console.log('[Authenticated]')
             this.props.flashMessage('Please log in to continue', 'Danger')
             const timer = setInterval(()=> {
-                this.props.flashMessage('','')
+                this.props.flashMessage(null, 'Danger')
                 clearInterval(timer);
                 }
                 , 5000)
         }
     }
+
     render(){
         return (
             <div>

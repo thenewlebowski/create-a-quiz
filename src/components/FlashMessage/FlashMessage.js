@@ -4,19 +4,36 @@ import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {flashMessage as flash} from '../../actions/authActions';
 
+//========COMPONTENT=======//
+import { Transition, animated } from 'react-spring/renderprops'
+
 import classes from './FlashMessage.module.css';
 
 class FlashMessage extends Component {
     render() {
         const {message, className} = this.props.flashMessage
         let assignClasses = [classes.FlashMessage, classes[className]];
-        if(!message || message === ''){
-            return null
+        if(!message){
+            setInterval(()=>{
+                return null
+            }, 5000)   
         }
         return (
-            <div className={assignClasses.join(' ') }>
-                <p>{message}</p>
-            </div>
+            <Transition
+                items={message}
+                from={{ transform: 'translate3d(0,-400px,0)' }}
+                enter={{ transform: 'translate3d(0,-60px,0)' }}
+                leave={{ transform: 'translate3d(0,-400px,0)'}}
+            >
+                {message =>
+                    message && ( props=>
+                    <animated.div style={props}>
+                        <div className={assignClasses.join(' ') }>
+                            <p>{message}</p>
+                        </div>
+                    </animated.div>)
+                }
+            </Transition>
         )
     }
 }

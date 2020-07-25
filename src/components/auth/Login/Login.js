@@ -6,12 +6,9 @@ import PropTypes from 'prop-types';
 //======REDUX======
 import { connect } from 'react-redux';
 import { loginUser } from '../../../actions/authActions';
-import FlashMessage from '../../FlashMessage/FlashMessage';
-
 
 //======STYLING======
 import classes from './Login.module.css';
-
 
 class Login extends Component {
     constructor(props){
@@ -43,6 +40,9 @@ class Login extends Component {
     //              errors: nextProps.errors    
     //      })
     //    }
+    // }
+    // componentWillUnmount(){
+    //     this.props.flashMessage(null, null)
     // }
 
     UNSAFE_componentWillReceiveProps(nextProps){
