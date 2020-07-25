@@ -9,14 +9,12 @@
     margin: auto;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     width: 100%
 }
 
 .HR{
     width: 75%; 
     border-color: #2A2924;
-   
 }
 
 .Button{

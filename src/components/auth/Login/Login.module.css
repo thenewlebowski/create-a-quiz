@@ -1,0 +1,55 @@
+.Container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 50vh
+}
+
+.Form{
+    display: inherit;
+    flex-direction: column;
+    width: 33%;
+    margin: auto;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+}
+
+.FormGroup input{
+    padding: 10px;
+    margin: 10px auto;
+    width: 90%;
+    border-radius: 15px;
+    border: 0;
+    -webkit-box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 3px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 1px 3px 5px 0px rgba(0,0,0,0.75);
+}
+
+.Form button{
+    display: block;
+    width: 50%;
+    margin: 35px auto;
+    border-radius: 15px;
+    border: 0;
+    color: #eee;
+    background-color: #24252A;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: 500;
+    transition: all 0.3s ease 0s;
+    text-decoration: none;
+    -webkit-box-shadow: 1px 3px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 3px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 1px 3px 5px 0px rgba(0,0,0,0.75);
+}
+
+.Form button:hover{
+    /* margin: 30px auto; */
+    padding: 8px;
+    cursor: pointer;
+    font-size: 25px;
+    color: #0088a9; 
+    text-decoration: none; 
+    
+}
+

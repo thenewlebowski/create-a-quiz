@@ -1,27 +1,81 @@
-import React from 'react'
+import React, {Component} from 'react';
+import { Link } from 'react-router-dom'
+
+//=====REDUX=====
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { flashMessage } from '../../actions/authActions';
 
 //=====COMPONENTS=====
 import HomeHeaderCard from './HomeHeaderCard/HomeHeaderCard';
 import HomeMain from './HomeMain/HomeMain';
+import HomePageFooter from '../OtherQuizes/Quizes'
 
 //======STYLING=======
 import classes from './Home.module.css'
 
-const Home = (props) => {
-    return (
-        <div>
-            <div className={classes.HomeHeader}>
-                <HomeHeaderCard link={'/newquiz'} name={'Start new Quiz'} />
-                <div className={classes.CenterDiv}>
-                    <div className={classes.VerticalLine} />
-                    <p>or</p>
-                    <div className={classes.VerticalLine} />
+class Home extends Component {
+
+    handleClick = () =>{
+        if(!this.props.auth.isAuthenticated){
+            console.log('[Authenticated]')
+            this.props.flashMessage('You must be logged in to do that', 'Danger')
+            const timer = setInterval(()=> {
+                this.props.flashMessage('','')
+                clearInterval(timer);
+                }
+                , 5000)
+        }
+    }
+    render(){
+        return (
+            <div>
+                <div className={classes.HomeHeader}>
+                    <div className={classes.Card}>
+                        <div className={classes.CardInterior}>
+                            <Link
+                                onClick={this.handleClick} 
+                                to={'/newquiz'} 
+                                className={classes.Button}
+                            >New Quiz</Link>
+                            {/* {this.this.props.name2 ? <Link to={this.this.props.link2} className={classes.Button}>{this.this.props.name2}</Link> : null} */}
+                        </div>
+                    </div>
+                    {/* <HomeHeaderCard link={'/newquiz'} name={'Start new Quiz'} /> */}
+                    <div className={classes.CenterDiv}>
+                        <div className={classes.VerticalLine} />
+                        <p>or</p>
+                        <div className={classes.VerticalLine} />
+                    </div>
+                    <div className={classes.Card}>
+                        <div className={classes.CardInterior}>
+                            <Link
+                                to={'/login'} 
+                                className={classes.Button}
+                            >Login</Link>
+                            <Link 
+                                to={'/signup'} 
+                                className={classes.Button}
+                            > Sign Up</Link>
+                        </div>
+                    </div>
+                    {/* <HomeHeaderCard link={'/login'} name={'Login'} name2={'Sign up'} link2={'/signup'} /> */}
                 </div>
-                <HomeHeaderCard link={'/login'} name={'Login'} name2={'Sign up'} link2={'/signup'} />
+                <HomeMain />
+                <HomePageFooter />
             </div>
-            <HomeMain />
-        </div>
-    )
+        )
+    }
 }
 
-export default Home;
+const mapStatetoProps = state => ({
+    auth: state.auth
+})
+
+const mapDispatchToProps = dispatch =>{
+    return bindActionCreators({flashMessage}, dispatch)
+}
+
+export default connect
+( mapStatetoProps, mapDispatchToProps) 
+( Home )

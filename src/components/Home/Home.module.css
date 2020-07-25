@@ -24,3 +24,41 @@
     width: 2px;
     background-color: #24252A;
 }
+
+.Button{
+    margin: 20px auto;
+    min-width: 50%;
+    border-radius: 5px;
+    background-color: #24252A;
+    cursor: pointer;
+    padding: 20px;
+    color: #edf0f1;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    transition: all 0.3s ease 0s;
+    text-decoration: none; 
+    -webkit-box-shadow: 1px 3px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 3px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 1px 3px 5px 0px rgba(0,0,0,0.75);
+}
+
+.Card{
+    display: inherit;
+    box-sizing: border-box;
+    height: 50%;
+    width: 33%;
+    vertical-align: center;
+}
+
+.CardInterior{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    width: 100%
+}
+
+.Button:hover{
+    font-size: 25px;
+    color: #0088a9; 
+}

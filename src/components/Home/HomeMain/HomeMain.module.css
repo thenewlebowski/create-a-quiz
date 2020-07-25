@@ -1,0 +1,15 @@
+.HomeMain{
+    font-family: 'Montserrat';
+    text-align: left;
+    width: 66%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    vertical-align: middle;
+    justify-content: left;
+    height: 40vh;
+}
+
+.InteriorCard{
+    margin: auto;
+}

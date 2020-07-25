@@ -1,31 +1,34 @@
-import React, { Component } from 'react'
-import axios from 'axios'
+//=======REACT======
+import React, { Component } from 'react';
+import axios from 'axios';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 
-//Components
+//=======Components=======
 import BuildAQuizButton from './BuildAQuizButton/BuildAQuizButton'
 import QuizForum from './QuizForum/QuizForum'
 
-export default class BuildAQuiz extends Component {
 
+//Template for quiz [limit the amount of time we rewrite this code]
+const questionTemplate = {
+    question: '',
+    answer: '',
+    fakeAnswer1: '',
+    fakeAnswer2: '',
+    fakeAnswer3: '',
+}
+
+class BuildAQuiz extends Component {
+
+    
     state = {
         quizForum: {
             name: '',
             questions: [
-                    {
-                        question: '',
-                        answer: '',
-                        fakeAnswer1: '',
-                        fakeAnswer2: '',
-                        fakeAnswer3: '',
-                    }, 
+                    questionTemplate
                 ],
-        },
-        isQuizForumVisible: true,
-    }
-
-    handleQuizVisible = () => {
-        this.setState( prevState => ({isQuizForumVisible: !prevState.isQuizForumVisible}))
+        }
     }
 
     handleChange = (e, key) => {
@@ -55,27 +58,30 @@ export default class BuildAQuiz extends Component {
 
         const quiz = {
             name : this.state.quizForum.name,
-            questions : this.state.quizForum.questions
+            questions : this.state.quizForum.questions,
+            user: this.props.auth.user
         }
 
         axios.post('api/quizes/add', quiz)
             .then( res => console.log(res.data))
 
-        this.setState({
-            quizForum: {
-                name: '',
-                questions:[
-                    {
-                        question: '',
-                        answer: '',
-                        fakeAnswer1: '',
-                        fakeAnswer2: '',
-                        fakeAnswer3: '',
-                    }
-                 ],
-            },
-            isQuizForumVisible: false
-        })
+        window.location = '/';
+
+        // this.setState({
+        //     quizForum: {
+        //         name: '',
+        //         questions:[
+        //             {
+        //                 question: '',
+        //                 answer: '',
+        //                 fakeAnswer1: '',
+        //                 fakeAnswer2: '',
+        //                 fakeAnswer3: '',
+        //             }
+        //          ],
+        //     },
+        //     isQuizForumVisible: false
+        // })
     }
 
     handleQuizNameChange = (e) => {
@@ -86,19 +92,14 @@ export default class BuildAQuiz extends Component {
     }
 
     handleAddQuestion = () =>{
-        const questionTemplate = {
-            question: '',
-            answer: '',
-            fakeAnswer1: '',
-            fakeAnswer2: '',
-            fakeAnswer3: '',
-        }
+        let Questions = [
+            ...this.state.quizForum.questions,
+            questionTemplate
+
+        ]
         this.setState({
             quizForum: {
-                questions: [
-                    ...this.state.quizForum.questions,
-                    questionTemplate
-                ]
+                questions: Questions
             }
         })
     }
@@ -118,9 +119,9 @@ export default class BuildAQuiz extends Component {
     }
 
     render() {
-        let quizForum = null;
-        if(this.state.isQuizForumVisible){
-            quizForum = (
+        
+        //Quiz Form
+        const  quizForum = (
                 <QuizForum
                     handleQuizNameChange={this.handleQuizNameChange}
                     submit = {this.handleSubmit}
@@ -130,7 +131,7 @@ export default class BuildAQuiz extends Component {
                     remove={this.handleRemoveQuestion}
                 />
             )
-        }
+
         return (
             <div>
                 <BuildAQuizButton 
@@ -142,3 +143,16 @@ export default class BuildAQuiz extends Component {
         )
     }
 }
+
+BuildAQuiz.propTypes = {
+    auth: PropTypes.object.isRequired,
+};
+
+
+const mapStateToProps = state =>({
+    auth: state.auth
+})
+
+export default 
+connect(mapStateToProps)
+(BuildAQuiz)

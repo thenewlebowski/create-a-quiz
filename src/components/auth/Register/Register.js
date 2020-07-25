@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+
+//=======REDUX=======
 import { connect } from 'react-redux';
-import { registerUser } from '../../actions/authActions'
+import { registerUser } from '../../../actions/authActions'
+
+//======STYLING======
+import classes from './Register.module.css'
 
 class Register extends Component {
     constructor(props){
@@ -44,11 +49,10 @@ class Register extends Component {
         const { errors } = this.state;
 
         return(
-            <div> 
-                <h1>Register</h1>
-
-                <form noValidate onSubmit={this.handleSubmit}>
-                    <div>
+            <div className={classes.Container}>
+                <form className={classes.Form} noValidate onSubmit={this.handleSubmit}>
+                    <h1>Register</h1>
+                    <div className={classes.FormGroup}>
                         <label htmlFor='name'>Name: </label>
                         <span>{errors.name}</span>
                         <input
@@ -57,10 +61,9 @@ class Register extends Component {
                             value={this.state.name}
                             error={errors.name}
                             onChange={this.handleChange}
-                        />   
-                    </div>
-
-                    <div>
+                        />
+                    </div> 
+                    <div className={classes.FormGroup}>  
                         <label htmlFor='email'>Email: </label>
                         <span>{errors.email}</span>
                         <input 
@@ -71,8 +74,7 @@ class Register extends Component {
                             type='email'
                         />
                     </div>
-
-                    <div>
+                    <div className={classes.FormGroup}>
                         <label htmlFor='password'>Password: </label>
                         <span>{errors.email}</span>
                         <input 
@@ -83,8 +85,7 @@ class Register extends Component {
                             type='password'
                         />
                     </div>
-                    
-                    <div>
+                    <div className={classes.FormGroup}>
                         <label htmlFor='password2'>Confirm Password: </label>
                         <span>{errors.password2}</span>
                         <input
@@ -95,16 +96,14 @@ class Register extends Component {
                             error={errors.password2}
                         />
                     </div>
-                    
-                    <div>
-                        <button
-                            type='submit'
-                        >
-                            Sign Up
-                        </button>
-                    </div>
+                    <button
+                        type='submit'
+                    >
+                        Sign Up
+                    </button>
+                    <p>or if you already have an account <Link to='/login'>login.</Link></p>
                 </form>
-            </div>
+            </div>   
         )
     }
 }

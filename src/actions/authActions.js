@@ -5,7 +5,8 @@ import jwt_decode from 'jwt-decode';
 import {
     GET_ERRORS,
     SET_CURRENT_USER,
-    USER_LOADING
+    USER_LOADING,
+    FLASH_MESSAGE
 } from './types';
 
 //Register User
@@ -68,4 +69,15 @@ export const logoutUser = () => dispatch => {
     setAuthToken(false);
     //Set current user to empty object {} which will set id Authenticated to false
     dispatch(setCurrentUser({}));
+}
+
+//Flash Message
+export const flashMessage = (message, className) => {
+    return {
+        type: FLASH_MESSAGE,
+        payload: {
+            message,
+            className
+        }
+    }
 }

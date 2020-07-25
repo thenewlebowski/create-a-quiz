@@ -4,11 +4,12 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 //=======COMPONENTS=======
 import BuildAQuiz from '../BuildAQuiz/BuildAQuiz';
-import OtherQuizes from '../OtherQuizes/Quizes';
+import PrivateRoute from '../PrivateRoute/PrivateRoute'
 import Navbar from '../Navigation/Navbar/Navbar';
 import Home from '../Home/Home'
-import Login from '../auth/Login'
-import Register from '../auth/Register'
+import Login from '../auth//Login/Login'
+import Register from '../auth/Register/Register'
+import FlashMessage from '../FlashMessage/FlashMessage'
 //=======REDUX=======
 import { Provider } from 'react-redux';
 import store from '../../store';
@@ -16,10 +17,11 @@ import store from '../../store';
 //======JWT-DECODE======
 import jwt_decode from 'jwt-decode';
 import setAuthToken from '../../utils/setAuthToken';
-import { setCurrentUser, logoutUser, loginUser } from '../../actions/authActions';
+import { setCurrentUser, logoutUser} from '../../actions/authActions';
 
 //======STYLING=======
 import classes from './Layout.module.css';
+import { FLASH_MESSAGE } from '../../actions/types';
 
 //Check to see if token exists to keep user logged in
 if(localStorage.jwtToken){
@@ -45,21 +47,14 @@ export default function Layout() {
         <Provider store={store}>
             <Router>
                 <Navbar />
+                <FlashMessage />
                 <Route exact path={'/'} component={Home} />
-                <Route exact path={'/newquiz'} component={BuildAQuiz} />
+                <Switch>
+                    <PrivateRoute path={'/newquiz'} component={BuildAQuiz} />
+                </Switch>
                 <Route exact path={'/login'} component={Login} />
                 <Route exact path={'/signup'} component={Register} />
-                <OtherQuizes />
             </Router>
         </Provider>
-        // <div>
-        //     <h1>Navbar</h1>
-        //     <main>
-        //         <BuildAQuiz />
-        //     </main>
-        //     <footer className={classes.Footer}>
-        //         <OtherQuizes />
-        //     </footer>
-        // </div>
     )
 }

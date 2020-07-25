@@ -17,10 +17,7 @@ const Quizes = () => {
                 .then( res => setLoading(false))
                 .catch( err => console.log(err))
         }
-        console.log('[Quizes.js] useEffect')
-
         fetchData()
-        console.log(data)
     }, [])
     return (
         <Auxiliary>

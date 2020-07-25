@@ -1,7 +1,17 @@
+//======REACT/ROUTER======
+import { Link } from 'react-router-dom'
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
+
+//======REDUX======
 import { connect } from 'react-redux';
-import { loginUser } from '../../actions/authActions';
+import { loginUser } from '../../../actions/authActions';
+import FlashMessage from '../../FlashMessage/FlashMessage';
+
+
+//======STYLING======
+import classes from './Login.module.css';
+
 
 class Login extends Component {
     constructor(props){
@@ -47,7 +57,6 @@ class Login extends Component {
         }
     }
 
-
     handleChange = e => {
         this.setState({
             [e.target.id] : e.target.value
@@ -56,23 +65,22 @@ class Login extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-
         const userData = {
             email: this.state.email,
             password: this.state.password,
         }
-
         this.props.loginUser(userData)
     }
 
     render() {
         const {errors} = this.state;
         return (
-            <div className='Container'>
-                <h1>Login</h1>
+            <div className={classes.Container}>
+                
 
-                <form noValidate onSubmit={this.handleSubmit}>
-                    <div>
+                <form className={classes.Form} noValidate onSubmit={this.handleSubmit}>
+                    <h1>Login</h1>
+                    <div className={classes.FormGroup}>
                         <label htmlFor='email'>Email: </label>
                         <span>{errors.email} {errors.emailnotfound}</span>
                         <input
@@ -83,7 +91,7 @@ class Login extends Component {
                             type='text'
                             />
                     </div>
-                    <div>
+                    <div className={classes.FormGroup}>
                         <label htmlFor='password'>Password:</label>
                         <span>{errors.password} {errors.passwordIncorrect}</span>
                         <input
@@ -96,6 +104,7 @@ class Login extends Component {
                     <button
                         type='submit'
                     >Login</button>
+                    <p>or if you don't have an account <Link to='/signup'>sign up.</Link> </p>
                 </form>
             </div>
         )
