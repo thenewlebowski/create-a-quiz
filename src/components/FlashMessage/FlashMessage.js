@@ -7,7 +7,6 @@ import {flashMessage as flash} from '../../actions/authActions';
 import classes from './FlashMessage.module.css';
 
 class FlashMessage extends Component {
-
     render() {
         const {message, className} = this.props.flashMessage
         let assignClasses = [classes.FlashMessage, classes[className]];

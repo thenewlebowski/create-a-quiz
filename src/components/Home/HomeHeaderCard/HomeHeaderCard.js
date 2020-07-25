@@ -11,12 +11,14 @@ import classes from './HomeHeaderCard.module.css'
 
 
 class HomeHeaderCard extends Component {
+    
+
     render(){
         const handleClick = () =>{
             if(!this.props.auth.isAuthenticated){
                 
                 this.props.flashMessage('You must be logged in to do that', 'Danger')
-            } 
+            }
         }
         return (
             <div className={classes.Card}>
