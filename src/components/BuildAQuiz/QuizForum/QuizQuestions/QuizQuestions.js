@@ -21,7 +21,7 @@ export default function QuizQuestions(props) {
                             type='radio'
                             value='correctAnswer'
                             checked={props.answers[index].correctAnswer}
-                            onChange={(e)=>props.handleRadioBtnChange(e, index, props.currentQuestion)}
+                            onChange={(e)=>props.handleTruthChange(e, index, props.currentQuestion)}
                         />
                     </div>
                 </div>

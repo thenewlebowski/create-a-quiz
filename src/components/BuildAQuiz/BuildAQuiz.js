@@ -45,7 +45,7 @@ class BuildAQuiz extends Component {
     }
 
     //radio button change listener
-    handleRadioBtnChange = (e, key, questionKey) => {
+    handleTruthChange = (e, key, questionKey) => {
         //change previous answer to false
         let questionsArr = [
             ...this.state.quizForum.questions
@@ -219,7 +219,7 @@ class BuildAQuiz extends Component {
         //Quiz Form
         const  quizForum = (
                 <QuizForum
-                    handleRadioBtnChange={this.handleRadioBtnChange}
+                    handleTruthChange={this.handleTruthChange}
                     handleQuizNameChange={this.handleQuizNameChange}
                     submit = {this.handleSubmit}
                     handleQuestionNameChange={this.handleQuestionNameChange}

@@ -14,7 +14,7 @@ export default function QuizForum(props) {
             handleQuestionNameChange={props.handleQuestionNameChange}
             handleAnswerChange={props.handleAnswerChange}
             remove={props.remove}
-            handleRadioBtnChange={props.handleRadioBtnChange}
+            handleTruthChange={props.handleTruthChange}
         />
     ))
 
