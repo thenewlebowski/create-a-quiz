@@ -6,10 +6,12 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import BuildAQuiz from '../BuildAQuiz/BuildAQuiz';
 import PrivateRoute from '../PrivateRoute/PrivateRoute'
 import Navbar from '../Navigation/Navbar/Navbar';
-import Home from '../Home/Home'
-import Login from '../auth//Login/Login'
-import Register from '../auth/Register/Register'
-import FlashMessage from '../FlashMessage/FlashMessage'
+import Home from '../Home/Home';
+import Login from '../auth//Login/Login';
+import Register from '../auth/Register/Register';
+import FlashMessage from '../FlashMessage/FlashMessage';
+import TakeAQuiz from '../TakeAQuiz/TakeAQuiz';
+
 //=======REDUX=======
 import { Provider } from 'react-redux';
 import store from '../../store';
@@ -50,8 +52,9 @@ export default function Layout() {
                 <FlashMessage />
                 <Route exact path={'/'} component={Home} />
                 <Switch>
-                    <PrivateRoute path={'/newquiz'} component={BuildAQuiz} />
+                    <PrivateRoute exact path={'/newquiz'} component={BuildAQuiz} />
                 </Switch>
+                <Route exact path={'/quizzes/:id'} component={TakeAQuiz} />
                 <Route exact path={'/login'} component={Login} />
                 <Route exact path={'/signup'} component={Register} />
             </Router>

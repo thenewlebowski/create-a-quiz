@@ -16,7 +16,6 @@ import classes from './Home.module.css'
 class Home extends Component {
     handleClick = () =>{
         if(!this.props.auth.isAuthenticated){
-            console.log('[Authenticated]')
             this.props.flashMessage('Please log in to continue', 'Danger')
             const timer = setInterval(()=> {
                 this.props.flashMessage(null, 'Danger')

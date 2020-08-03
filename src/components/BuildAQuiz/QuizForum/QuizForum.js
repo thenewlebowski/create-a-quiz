@@ -7,15 +7,14 @@ export default function QuizForum(props) {
 
     let questions = props.questions.map((question, index)=>(
         <QuizQuestions
-            answer={question.answer}
+            answers={question.answers}
             question={question.question}
-            fakeAnswer1={question.fakeAnswer1}
-            fakeAnswer2={question.fakeAnswer2}
-            fakeAnswer3={question.fakeAnswer3}
             key={index}
             currentQuestion={index} 
-            handleChange={props.handleChange}
+            handleQuestionNameChange={props.handleQuestionNameChange}
+            handleAnswerChange={props.handleAnswerChange}
             remove={props.remove}
+            handleRadioBtnChange={props.handleRadioBtnChange}
         />
     ))
 
