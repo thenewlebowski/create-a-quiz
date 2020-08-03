@@ -1,7 +1,14 @@
 .Form {
     width: 50%;
     margin: auto;
-    font-family: 'Mon';
+    font-family: "Montserrat", sans-serif;
+}
+
+.Form input[type=text]{
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+    border-bottom: 1px solid #e5e5e5;
 }
 
 .InputStyle1 input{ 
@@ -10,6 +17,7 @@
     border: none;
     border-bottom: 1px solid #e5e5e5;
     text-align: center;
+   
 }
 
 .InputGroup {

@@ -1,14 +1,25 @@
 .Remove {
     background: #FF0000	;
     color: #fff;
-    font-family: 'Helvetica', 'Arial', sans-serif;
+    /* font-family: 'Helvetica', 'Arial', sans-serif; */
     font-size: 1em;
     font-weight: bold;
     text-align: center;
     width: 30px;
     height: 30px;
     border-radius: 5px;
-    margin: 5px;
     padding-top: auto;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    transition: all .3s ease 0s;
+  }
+
+  .Remove:hover {
+    font-size: 2em;
+  }
+
+  .Icon{
+    height: 100%;
+    width: 100%;
   }

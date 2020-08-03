@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 
 
 //=======Components=======
@@ -156,29 +157,24 @@ class BuildAQuiz extends Component {
 
 
         //Development
-        console.log(quiz)
+        // console.log(quiz)
 
         //Production
-        // axios.post('api/quizes/add', quiz)
-        //     .then( res => console.log(res.data))
+        axios.post('api/quizes/add', quiz)
+            .then( res => console.log(res.data))
 
         
 
-        // this.setState({
-        //     quizForum: {
-        //         name: '',
-        //         questions:[
-        //             {
-        //                 question: '',
-        //                 answer: '',
-        //                 fakeAnswer1: '',
-        //                 fakeAnswer2: '',
-        //                 fakeAnswer3: '',
-        //             }
-        //          ],
-        //     },
-        //     isQuizForumVisible: false
-        // })
+        this.setState({
+            quizForum: {
+                name: '',
+                questions: [
+                        questionTemplate
+                    ],
+            }
+        })
+
+        window.location = '/';
     }
 
     handleQuizNameChange = (e) => {
@@ -216,9 +212,9 @@ class BuildAQuiz extends Component {
     }
 
     render() {
-        //Quiz Form
-        const  quizForum = (
-                <QuizForum
+        return (
+            <div>
+                 <QuizForum
                     handleTruthChange={this.handleTruthChange}
                     handleQuizNameChange={this.handleQuizNameChange}
                     submit = {this.handleSubmit}
@@ -228,15 +224,6 @@ class BuildAQuiz extends Component {
                     questions={this.state.quizForum.questions}
                     remove={this.handleRemoveQuestion}
                 />
-            )
-
-        return (
-            <div>
-                <BuildAQuizButton 
-                    clicked={this.handleQuizVisible} 
-                    visible={!this.state.isQuizForumVisible}
-                />
-                {quizForum}
             </div>
         )
     }

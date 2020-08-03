@@ -1,29 +1,32 @@
 import React from 'react'
 
 import classes from './QuizQuestions.module.css';
+
+//=====COMPONENTS=====//
 import RemoveButton from '../RemoveButton/RemoveButton'
 
 export default function QuizQuestions(props) {
     let count = 1;
     let quizAnswers = (
-        <div>
+        <div className={classes.Answers}>
             {props.answers.map((answer, index) => (
-                <div key={index} className={classes.Answers}>
-                    <div>
-                        <h5 className={classes.Label}>Answer #{count++}:</h5>
+                <div key={index} >
+                        <h5 className={classes.Label}>Answer #{count++}:
+                            <input
+                                type='radio'
+                                value='correctAnswer'
+                                checked={props.answers[index].correctAnswer}
+                                onChange={(e)=>props.handleTruthChange(e, index, props.currentQuestion)}
+                            />
+                        </h5>
+                        
                         <input
                             type='text'
                             key={index}
                             value={props.answers[index].answer}
                             onChange={(e) => props.handleAnswerChange(e, index, props.currentQuestion)}
                         />
-                        <input
-                            type='radio'
-                            value='correctAnswer'
-                            checked={props.answers[index].correctAnswer}
-                            onChange={(e)=>props.handleTruthChange(e, index, props.currentQuestion)}
-                        />
-                    </div>
+                        
                 </div>
             ))
             }
