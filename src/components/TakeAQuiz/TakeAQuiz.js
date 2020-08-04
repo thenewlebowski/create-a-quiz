@@ -24,43 +24,60 @@ export default class TakeAQuiz extends Component {
             .then( res => {
                 this.setState({
                     name: res.data.name,
-                    questions: [],
+                    questions: res.data.questions,
                     author: res.data.author,
                     loading: false
                 })
             })
+        
+    }
+
+    //handle statement is true/false
+    handleCheckAnswer = (key, questionKey) => {
+        //check answer w/ key
+        console.log(this.state.questions[questionKey].answers)
+        if(this.state.questions[questionKey].answers[key].true === true){
+            alert('TRUE');
+        } else {
+            alert('FALSE');
+        }
+
+        //set previous selection 
     }
 
     render() {
-        let questions = (
-            <div>
-                {this.state.questions.map(question => (
-                    <Question 
-                        question={question.question}
-                        anwser={question.anwser}
-                        fakeAnwser1={question.fakeAnwser1}
-                        fakeAnwser2={question.fakeAnwser2}
-                        fakeAnwser3={question.fakeAnwser3}
-                    />
-                ))}
-            </div>
-        )
-        let quiz = null
-        if(this.state.loading === false)(
+
+        let questions = null;
+        let quiz = null;
+
+        if(!this.state.loading){
             quiz = (
-            <div>
-                <h1>{this.state.name}</h1>
-                <div>{questions}</div>
                 <div>
-                   <p>made by {this.state.author.username}</p> 
+                    <h1>{this.state.name.toUpperCase()}</h1>
+                    <div>
+                        <p>made by {this.state.author.username}</p> 
+                    </div>
                 </div>
-            </div>
             )
-        )
+                
+            questions = (
+                <div>
+                    {this.state.questions.map((question,index) => (
+                        <Question
+                            key = {index}
+                            questionKey = {index}
+                            checkAnswer = {this.handleCheckAnswer}
+                            question={question.question}
+                            answers={question.answers}
+                        />
+                    ))}
+                </div>
+            )
+        }
         return (
             <Auxiliary>
                 {quiz}
-                
+                {questions}
             </Auxiliary>
         )  
     }

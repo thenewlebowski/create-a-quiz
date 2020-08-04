@@ -6,7 +6,6 @@ import axios from 'axios';
 
 
 //=======Components=======
-import BuildAQuizButton from './BuildAQuizButton/BuildAQuizButton';
 import QuizForum from './QuizForum/QuizForum';
 
 
@@ -47,7 +46,6 @@ class BuildAQuiz extends Component {
 
     //radio button change listener
     handleTruthChange = (e, key, questionKey) => {
-        //change previous answer to false
         let questionsArr = [
             ...this.state.quizForum.questions
         ]
@@ -66,9 +64,9 @@ class BuildAQuiz extends Component {
         //set previous correct answer to false
         answers.forEach((answer, i) => {
             //check to see what previous answer was selected true
-            if(answers[i].correctAnswer === true){
+            if(answer.correctAnswer === true){
                 //set answer to false
-                answers[i].correctAnswer = false;
+                answer.correctAnswer = false;
             }
         })
 

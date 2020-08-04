@@ -1,0 +1,28 @@
+.QuestionContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 50%;
+    margin: auto;
+    font-family: "Montserrat", sans-serif;
+    color: #edf0f1;
+    background-color: #24252A;
+    padding: 15px;
+    margin: 15px auto;
+    border-radius : 5px;
+    height:30vh;
+}
+
+.QuestionContainer h3{
+    font-size: 1.75rem;
+}
+
+.AnswersContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.AnswersContainer p {
+    font-size: 1.5rem;
+}
