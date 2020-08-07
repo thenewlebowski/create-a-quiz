@@ -1,0 +1,22 @@
+.Header{
+    background-color: #24252A;
+    margin: 10px auto;
+    width: 50%;
+    padding: 15px;
+    border-radius: 5px;
+    color: #edf0f1;
+}
+
+.Header h1, 
+.Header p{
+    margin: 0;
+}
+.Header h1{
+    font-size: 5rem;
+}
+
+.Header p {
+    font-size: .8rem;
+    opacity: .25;
+    text-align: right;
+}

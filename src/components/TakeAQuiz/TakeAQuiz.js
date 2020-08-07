@@ -6,7 +6,8 @@ import Auxiliary from '../../hoc/Auxiliary/Auxiliary';
 import Question from './Question/Question';
 
 //=======STYLING=========//
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import classes from './TakeAQuiz.module.css';
 
 export default class TakeAQuiz extends Component {
     state = {
@@ -17,6 +18,7 @@ export default class TakeAQuiz extends Component {
             userName: '',
         },
         loading: true
+        
     }
 
     componentDidMount(){
@@ -34,29 +36,30 @@ export default class TakeAQuiz extends Component {
 
     //handle statement is true/false
     handleCheckAnswer = (key, questionKey) => {
+        let currentanswerKey = this.state.questions[questionKey].answers[key].true
         //check answer w/ key
-        console.log(this.state.questions[questionKey].answers)
-        if(this.state.questions[questionKey].answers[key].true === true){
+        console.log(this.state.questions[questionKey].answers[key])
+        if(this.state.questions[questionKey].answers[key].correctAnswer === true){
             alert('TRUE');
         } else {
             alert('FALSE');
         }
+        //push classes to selected answer
 
-        //set previous selection 
+        //set previous selection
+
     }
 
     render() {
 
         let questions = null;
-        let quiz = null;
+        let quizHeader = null;
 
         if(!this.state.loading){
-            quiz = (
-                <div>
+            quizHeader = (
+                <div className={classes.Header}>
                     <h1>{this.state.name.toUpperCase()}</h1>
-                    <div>
-                        <p>made by {this.state.author.username}</p> 
-                    </div>
+                    <p><i>made by {this.state.author.username}</i></p>   
                 </div>
             )
                 
@@ -76,7 +79,7 @@ export default class TakeAQuiz extends Component {
         }
         return (
             <Auxiliary>
-                {quiz}
+                {quizHeader}
                 {questions}
             </Auxiliary>
         )  

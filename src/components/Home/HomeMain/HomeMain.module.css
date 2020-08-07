@@ -8,8 +8,16 @@
     vertical-align: middle;
     justify-content: left;
     height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 .InteriorCard{
-    margin: auto;
+    
 }
+
+.InteriorCard h3{
+    display: flex;
+    justify-content: space-between ;
+}   
